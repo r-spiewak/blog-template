@@ -2,9 +2,19 @@
 
 See the GitHub Pages [here](https://r-spiewak.github.io/blog-template/).
 
-## Build Instructions
+
+## GitHub Pages Build Instructions
+
+The following are the steps necessary to set up the GitHub Pages to host the site:
+1. Make sure the repo is public or in a paid tier that includes Pages hosting.
+2. On GitHub, go to Settings -> Pages. Under `Build and deployment`, under `Source`, select `GitHub Actions`.
+3. The jekyll build and deploy workflows in [.github/workflows/jekyll.yml](.github/workflows/jekyll.yml) will then build the site and deploy it to Pages.
+
+
+## Local Build Instructions
 
 The following steps are necessary to build the site locally.
+
 
 ### Requirements
 
@@ -30,6 +40,7 @@ source ~/.bashrc
 gem install jekyll bundler
 ```
 
+
 ### Build
 
 Run the following from the root of the repo:
@@ -38,12 +49,14 @@ bundle install
 bundle exec jekyll build --trace
 ```
 
+
 ### Serve
 
 To serve the site locally (and automatically rebuild on any changes), run the following:
 ```
 bundle exec jekyll serve --livereload --host localhost --port 4444
 ```
+
 
 ### Troubleshooting
 

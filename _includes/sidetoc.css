@@ -1,0 +1,112 @@
+
+.sidetoc {
+    width: 130px;
+    position: fixed;
+    /* The below makes the actual site content appear below the nav menu */
+    /* position: sticky; */
+    z-index: 1;
+    top: 60px;
+    bottom: 20px;
+    /* top: 0;
+    bottom: 0; */
+    /* left: 5px; */
+    /* left: 0; */
+    right: 0;
+    background: #eee;
+    /* overflow-x: hidden; */
+    overflow-x: scroll;
+    /* overflow-x: auto; */
+    height: 60dvh;       /* Sets height to 57% of the viewport height; calibrated so it never overlaps the footer - this calibration makes no sense and is heavily dependent on the screensize, so instead just set it to a normal number, e.g., 60  */
+    overflow-y: auto;
+    /* overflow-y: scroll; */
+    padding: 8px 0 8px 0;
+    /* margin-left: 200px; */
+
+    min-width: 10px;
+    min-height: 30dvh;
+    resize: both;
+    /* direction: rtl; */ /* Make sure to pair the inner container with ltr */
+    transform: scaleX(-1);
+    display: inline-flex;
+    /* padding: 0; */
+    box-sizing: border-box;
+}
+
+.sidetoc > * {
+    /* direction: ltr; */
+    transform: scaleX(-1);
+    /* overflow-x: auto;
+    overflow-y: auto; */
+    /* padding: 0; */
+    width: 100%;
+    height: 100%;
+}
+
+.sidetoc a {
+    padding: 0px 8px 0px 8px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #2196F3;
+    display: block;
+}
+
+.sidetoc a:hover {
+    color: #064579;
+}
+
+
+@media screen and (max-height: 450px) {
+    .sidetoc {
+        padding-top: 15px;
+    }
+
+    .sidetoc a {
+        font-size: 18px;
+    }
+}
+
+/* Make the ordered list have counters */
+.sidetoc-toc {
+  counter-reset: item;
+  list-style-type: none; /* Disable default numbering so we can inject our own */
+  /* direction: ltr; */
+  /* transform: scaleX(-1); */
+}
+
+.sidetoc-toc ol {
+  counter-reset: item;
+  list-style-type: none;
+}
+
+.sidetoc-toc li {
+    display: flex;
+    /* align-items: left; */
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.sidetoc-toc li::before {
+/* .sidetoc-toc li::after { */
+  content: counters(item, ".") ". ";
+  counter-increment: item;
+  flex-shrink: 0;
+  padding-left: 8px;
+}
+
+/* Optional: Prevent the double-digit period if you only want '1.1' instead of '1.1.' */
+/* .sidetoc-toc li li::before {
+  content: counters(item, ".") " ";
+} */
+
+.sidetoc-toc li a {
+    flex: 1;
+    flex-grow: 1;
+}
+
+.sidetoc-toc li ol {
+    /* display: block; */
+    flex-basis: 100%;
+    width: 100%;
+    flex-shrink: 0;
+    /* margin-top: 0.25em; */
+}

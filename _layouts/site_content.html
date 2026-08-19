@@ -1,0 +1,97 @@
+---
+layout: default
+<!-- toc: true -->
+---
+<div>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% comment %}<!-- This will make the image appear in the main page content, not the title bar... -->{% endcomment %}
+    <!-- <img src="{{ site.favicon_svg | absolute_url }}" alt="Site Icon"> -->
+    <title>{{ page.title | default: site.title }}</title>
+    <!-- SVG Favicon -->
+    <!-- <link rel="icon" href="{{ '/assets/images/RPiOnQuillOnScroll.svg' | relative_url }}" type="image/svg+xml"> -->
+    <link rel="icon" href="{{ site.favicon_svg | absolute_url }}" type="image/svg+xml" sizes="any">
+    <!-- PNG fallback for older browsers -->
+    <!-- <link rel="shortcut icon" href="{{ '/assets/images/RPiOnQuillOnScroll.png' | relative_url }}" type="image/png"> -->
+    <link rel="icon" href="{{ site.favicon_png | absolute_url }}" type="image/png">
+    <!-- ICO fallback for even older broswers -->
+    <!-- <link rel="icon" href="{{ '/assets/images/RPiOnQuillOnScroll.ico' | relative_url }}" type="image/x-icon"> -->
+    <link rel="icon" href="{{ site.favicon_ico | absolute_url }}" type="image/x-icon">
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        .page-title {
+            font-weight: 550;
+            font-size: 34px;
+        }
+
+        .main {
+            margin-left: 140px;
+            /* Same width as the sidebar + left position in px */
+            margin-right: 140px;
+            font-size: 16px;
+            /* Increased text to enable scrolling */
+            padding: 0px 10px;
+        }
+
+        nav {
+            display: none !important;
+        }
+
+
+        {% include sidenav.css %}
+        {% include sidetoc.css %}
+
+    </style>
+
+    {% if site.sidebar or site.autosidebar %}
+        {% comment %}<div class="sidenav">{% endcomment %}
+            {% comment %}{% include sidebar5a.html %}{% endcomment %}
+            {% include autosidebar.html %}
+        {% comment %}</div>{% endcomment %}
+    {% endif %}
+    <div class="main">
+        <p class="page-title">{{ page.title }}</p>
+        {% comment %}<!-- {{ page.content | markdownify }} -->{% endcomment %}
+        {% comment %}
+        <!-- This one is from jekyll-toc extension. -->
+        {{ content | inject_anchors | markdownify }}
+        <!-- But it doesn't inject the id attr anchors into the header tags,
+         rather it injects an invisible a ref tag at the beginning
+         of the header text... -->
+        {% endcomment %}
+        {% comment %}
+        <!-- The regular form... -->
+        {{ content | markdownify }}
+        {% endcomment %}
+        {{ content | add_ids_to_headers | markdownify }}
+        {% comment %}
+        <!-- This one uses the thing from https://github.com/allejo/jekyll-anchor-headings/blob/master/_includes/anchor_headings.html
+         But it added lisnks to the rpevious anchor id,
+         it didn't add id attributes to html header tags that didn't have them. -->
+        {% include anchor_headings.html html=content anchorBody="#" %}
+        {% endcomment %}
+    </div>
+    {% include sidetoc.html %}
+
+    {% comment %}
+    <!-- {% comment %} Block to allow things to be appended in inheriting layouts. {% endcomment %}
+    % block after_content %}
+    % endblock %} -->
+    {% endcomment %}
+
+    {% comment %}{% if page.root? %}{% endif %}{% endcomment %}
+    {% comment %}{% if page.url == "/" or page.url == "/index.html" %}{% endif %}
+        <div class="main">
+            {% if site.debug %}
+                <p style="color:green;">Root index page!</p>
+            {% endif %}
+            {% include index-content-stub.md %}
+        </div>
+    {% if true %}{% endif %}{% endcomment %}
+    <script>
+        {% include sidenav.js %}
+        {% include sidetoc.js %}
+    </script>
+</div>

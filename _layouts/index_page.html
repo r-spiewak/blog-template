@@ -1,0 +1,15 @@
+---
+layout: "site_content"
+---
+
+<div>
+    <style>
+        {% include toc.css %}
+    </style>
+    {% comment %}<!-- {{ page.content | markdownify }} -->{% endcomment %}
+
+    {{ content | markdownify }}
+
+    <p class="site-toc-header">Contents:</p>
+    {% toc_immediate_children %}
+</div>

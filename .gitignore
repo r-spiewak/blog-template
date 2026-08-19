@@ -1,0 +1,9 @@
+# Built site
+_site
+
+**/*.DS_Store
+.jekyll-cache
+
+notes
+TODO.md
+*.bak

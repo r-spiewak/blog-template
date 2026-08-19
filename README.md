@@ -3,6 +3,22 @@
 See the GitHub Pages [here](https://r-spiewak.github.io/blog-template/).
 
 
+## Using the Template
+
+1. Create a repo using the template.
+2. Clone that repo.
+3. Set up that repo as a public repo, and set up [GitHub Pages](#github-pages-build-instructions).
+4. Update:
+    1. In [_config.yml](_config.yml):
+        1. `title`
+        2. `baseurl`
+        3. `favicon_svg`
+        4. `favicon_png`
+        5. `favicon_ico`
+    2. Update the three favicon files in [assets/images](assets/images/) (the names should match the attributes `favicon_svg`, `favicon_png`, and `favicon_ico` defined in [_config.yml](_config.yml), as modified above).
+    3. Update blog pages in [_site_content](_site_content/) for your new blog!
+
+
 ## GitHub Pages Build Instructions
 
 The following are the steps necessary to set up the GitHub Pages to host the site:

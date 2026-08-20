@@ -70,11 +70,11 @@ bundle exec jekyll build --trace
 
 To serve the site locally (and automatically rebuild on any changes), run the following:
 ```
-bundle exec jekyll serve --livereload --host localhost --port 4444
+bundle exec jekyll serve --livereload --host localhost --port 4444 --livereload-port 35730
 ```
 
 
 ### Troubleshooting
 
 1. If build errors persist even if there is nothing referring to those variables (and/or the file no longer has that many lines for which the build error produces the failing line reference), run `bundle exec jekyll clean` and rebuild. Also try manually removing the `.jekyll_cache` directory.
-2. If a complaint is given about `port is in use or requires root privileges`, check if the port is in use with `sudo ss -tulpn | grep 4444`. If the port is not in use, try removing the `--livereload` flag, as it sometimes seems to override the `--port` flag.
+2. If a complaint is given about `port is in use or requires root privileges`, check if the port is in use with `sudo ss -tulpn | grep 4444`. If the port is not in use, try removing the `--livereload` flag, as it sometimes seems to override the `--port` flag (actually, the livereload exposes a second port, and that is changed with the `--livereload-port` flag).
